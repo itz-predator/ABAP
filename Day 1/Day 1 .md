@@ -290,27 +290,151 @@ ENDAT.
 ENDLOOP.
 
 
+###  Modularization: 
+# Subroutines :
+-A subroutine is a reusable section of code. It is a modularization unit within the program where a function is encapsulated in the form of source code.
+-A subroutine can be defined using Form and EndForm statements.
+-We can call a subroutine by using PERFORM statement.
+# Example of Passing Parameters by Reference
+
+
+REPORT demo_pass_by_ref.
+
+DATA: num1 TYPE i,
+      num2 TYPE i,
+      sum  TYPE i.
+
+num1 = 2. num2 = 4.
+PERFORM addit USING num1 num2 CHANGING sum.
+
+num1 = 7. num2 = 11.
+PERFORM addit USING num1 num2 CHANGING sum.
+
+FORM addit
+       USING add_num1   TYPE any
+             add_num2   TYPE any
+       CHANGING add_sum TYPE any.
+
+  add_sum = add_num1 + add_num2.
+  PERFORM out USING add_num1 add_num2 add_sum.
+
+ENDFORM.
+
+FORM out
+       USING out_num1 TYPE any
+             out_num2 TYPE any
+             out_sum  TYPE any.
+
+  WRITE: / 'Sum of', out_num1, 'and', out_num2, 'is', out_sum.
+
+ENDFORM.
+
+This produces the following output:
+
+Sum of          2 and          4 is          6
+
+Sum of          7 and         11 is         18
+
+In this example, the actual parameters num1, num2, and sum are passed by reference to the formal parameters of the subroutine addit. After changing add_sum, the latter parameters are then passed to the formal parameters out_num1, out_num2, and out_sum  of the subroutine out.
+
+Input parameters that are changed in the subroutine are also changed in the calling program. To prevent this, you must pass the parameter as a value in a USING addition.
+
+# Example of Passing Parameters by Value
+
+
+REPORT demo_pass_by_val.
+
+DATA: num  TYPE i VALUE 5,
+      fac  TYPE i VALUE 0.
+
+PERFORM fact USING num CHANGING fac.
+
+WRITE: / 'Factorial of', num, 'is', fac.
+
+FORM fact
+       USING value(f_num) TYPE i
+       CHANGING f_fact    TYPE i.
+
+  f_fact = 1.
+  WHILE f_num GE 1.
+    f_fact = f_fact * f_num.
+    f_num = f_num - 1.
+  ENDWHILE.
+
+ENDFORM.
+
+This produces the following output:
+
+Factorial of          5 is        120
+
+To ensure that an input parameter is not changed in the calling program, even if it is changed in the subroutine, you can pass data to a subroutine by value. In this example, the factorial of a number num is calculated. The input parameter num is passed to the formal parameter f_num of the subroutine. Although f_num is changed in the subroutine, the actual parameter num keeps its old value. 
+
+# Function Modules:
+-Function modules are ABAP routines that encapsulate program code and provide an interface for data exchange. 
+-Function modules are stored in a central function library. 
+-They are not application-specific and are available system-wide. 
+-The ABAP Workbench comes with a large number of standard function modules.
+
+# Features
+## Main Features
+
+The main features of function modules are:
+
+-They belong to a pool called a function group.
+-They possess a fixed interface for data exchange. This makes it easier for you to pass input and output parameters to and from the function module. For example, you can assign default values to the input parameters. 
+-The interface also supports exception handling. This allows you to catch errors and pass them back to the calling program for handling.
+-You call a function module by name (which must be unique) in a CALL FUNCTION statement.
+
+# Function Groups
+
+-Function groups (also called function pools) are ABAP programs of a special type. 
+-They are the only program type that can contain function modules. Function modules are, in turn, procedures with public interface and are designed to be used by other programs. 
+-Function groups can contain global data declarations and subroutines that are available to all function modules in the group. 
+-In terms of object-oriented programming, a function group resembles a class and the function modules are its public static methods.
+# Function Builder (SE37)
+-Function Modules are created, modified, and managed using the Function Builder (transaction SE37).
+-Within the Function Builder, you may create import/export arguments, exceptions, and documentation.
+-Function Modules can be customized to add or change functionality.
+-Function Exit, BAdI (Business Add-Ins), and other approaches are used for enhancements.
+### Types of FM's
+# The type of function module depends on the Processing Type.
+
+# 1.Regular Function Module
+-A Regular Function Module is the default option. This kind of Function Module is executed immediately and synchronously on your current SAP system.
+
+CALL FUNCTION func { parameter_list | parameter_tables }. 
+# 2.Remote-Enabled Function Module
+-Remote Function Modules can be called by other SAP and non-SAP systems utilizing the RFC protocol.
+
+-For example, you can define a Remote Function Module in an EWM system which then gets called by your ERP system to get further information about stock levels or shipment details.
+
+CALL FUNCTION func DESTINATION dest parameter_list. 
+-This statement calls the target system specified under dest synchronously. Available RFC destinations are configured using transaction SM59. Use the unique name of a destination for parameter dest.
+
+-The calling program continues execution once the RFC has finished. Depending on the connection this can be a performance issue.
+
+# 3.Update Function Module
+-Update Function Modules are not executed immediately. They are scheduled for execution in an update work process. This update process is triggered by the statement COMMIT WORK. The statement ROLLBACK WORK deletes all update function module registrations.
+
+CALL FUNCTION update_function IN UPDATE TASK 
+                              [EXPORTING p1 = a1 p2 = a2 ...] 
+                              [TABLES t1 = itab1 t2 = itab2 ...]. 
+Using CALL FUNCTION .. IN UPDATE TASK is a way to bundle database changes into a single database LUW. It is also beneficial for performance since the update happens asynchronously.
+
+# What is a BAPI?
+-SAP BAPI stands for Business Application Programming Interface. Technically a BAPI is a Function Modules that offers a standard interface to business objects in SAP. Most of them are also RFC enabled.
+
+-Common use-cases are using a BAPI to create/read/update/delete business objects like Sales Orders, Business Partners, or Purchase Orders.
+
+-Those BAPIs behave like the SAP standard transactions for these business objects. This means that authorization checks are already in place and implemented user exits are considered.
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Modularization: Subroutines, Function Modules, Classes & Methods, Local and Global Classes
-S/4HANA Basics: Differences from ECC, Simplifications (e.g., Material Ledger, Business Partner)
-HANA Architecture: Column Store, Row Store, Code Pushdown Concept
-Data Dictionary (DDIC): Tables, Views, Domains, Search Helps, Lock Objects
-Hands-on: Create a transparent table and fetch data using Open SQL.
+# Classes & Methods, 
+# Local and Global Classes
+# S/4HANA Basics: Differences from ECC, 
+# Simplifications (e.g., Material Ledger, Business Partner)
+# HANA Architecture: Column Store, Row Store, Code Pushdown Concept
+# Data Dictionary (DDIC): Tables, Views, Domains, Search Helps, Lock Objects
+# Hands-on: Create a transparent table and fetch data using Open SQL.
