@@ -92,12 +92,75 @@ The output is:
 
 The data types defined in the type group are used to declare data objects with the DATA statement and the value of the constant is, as the output shows, known in the program.
 
+# Operators :
+# 1.Arithmetic Operators in SAP ABAP-
+# Example 
+DATA: num1 TYPE I VALUE 10,
+      num2 TYPE I VALUE 5,
+      result TYPE I.
+result = num1 + num2.  " Addition
+result = num1 - num2. " Subtraction
+result = num1 * num2. " Multiplication
+result = num1 / num2. " Division
+result = num1 MOD num2. " Modulus
+
+# Comparison/ Relational Operators in SAP ABAP-
+
+# Operator                             Function
+
+=, EQ returns true If two operands are equal to each other
+
+<>, NE returns true If two operands are not equal to each other
+
+<, LT returns true If first operand is less than second.
+
+>, GT returns true If first operand is greater than second.
+
+<=, LE returns true If first operand is less than or equal to second.
+
+>=, GE returns true If first operand is greater than or equal to second.
+
+IS INITIAL returns true if the variable declared is not modified
+
+IS NOT INITIAL returns true if the variable declared is modified
+
+a BETWEEN b AND c (INTERVAL TEST) returns true if a lies in between b and c
+
+# Example
+DATA: value1 TYPE I VALUE 10,
+      value2 TYPE I VALUE 20,
+      result TYPE C LENGTH 1.
+IF value1 EQ value2.
+  result = 'X'. " True
+ELSE.
+  result = ' '. " False
+ENDIF.
+
+# for more on operators follow the link
+# https://www.geeksforgeeks.org/operators-in-sap-abap/
+
+
+
+# Control Structures (Loops, IF, CASE, DO, WHILE)
 
 
 
 
 
-# Operators, Control Structures (Loops, IF, CASE, DO, WHILE)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Modularization: Subroutines, Function Modules, Classes & Methods, Local and Global Classes
 S/4HANA Basics: Differences from ECC, Simplifications (e.g., Material Ledger, Business Partner)
 HANA Architecture: Column Store, Row Store, Code Pushdown Concept
