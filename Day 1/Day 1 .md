@@ -467,7 +467,7 @@ WRITE: gv_num.
 ENDCLASS.
 
 
-# Methods 
+# Methods(SE24)
 -**Methods define the behavior of a class and can be instance methods or static methods .**
 
 ## Defining a Method 
