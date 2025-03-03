@@ -162,6 +162,88 @@ else.
 Write : 'Value is less than 10'.
 Endif.
 
+# b. case...when...endcase
+-used when multiple conditions exist for a single variable .
+# Example code 
+Data : lv_grade type char1 value 'B'.
+
+Case lv_grade.
+When 'A'.
+Write : 'excellent'.
+When 'B'.
+Write : 'Good '.
+When 'C'.
+Write : 'Average'.
+When Others.
+Write : 'Needs improvement'
+Endcase.
+
+# 2 Loops Construct 
+-Used to execute a block of code multiple times.
+# a.Do...Enddo
+-Executes the bllock indefinately unless explictly exited.
+
+# Example Code 
+Data : lv_count type i value 1.
+Do.
+Write : / lv_count.
+lv_count = lv_count + 1.
+If lv_count > 5.
+Exit. "Exit the loop
+Endif.
+Enddo.
+
+
+# b. While...endwhile
+-Executes as long as the condition is true .
+
+# Example Code 
+Data : lv_count type i value 1.
+While lv_count <= 5.
+write :/ lv_count .
+lv_count = lv_count + 1.
+endwhile.
+
+# c. Loop At...Endloop
+-Used to iterate over internal tables .
+
+# Example Code 
+Data : lt_data type table of i,
+lv_val type i.
+Append 10 to lt_data.
+append 20 to lt_data.
+append 30 to lt_data.
+
+Loop At lt_data into lv_val.
+write : / lv_val.
+endloop.
+
+# 3 Branching Statements
+- these statements help control the execution flow inside loops.
+- EXIT -Exits the loop immediately.
+- Continue - Skips the current iteration and proceeds to the next .
+- CHECK - Skips an iteration if the condition is false.
+
+# Example code
+Data : lv_count type i value 0.
+DO 10 times.
+lv_count + = 1.
+if lv_count = 5.
+Continue.
+Endif.
+write: / lv_count.
+if lv_count = 8.
+exit.
+endif.
+enddo.
+
+# Example with Check
+Data : lv_num type i.
+Do 10 times.
+lv_num = sy-index.
+check lv_num MOD 2 = 0.
+Write : / lv_num.
+enddo.
 
 
 
