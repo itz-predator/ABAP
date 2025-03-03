@@ -245,6 +245,52 @@ check lv_num MOD 2 = 0.
 Write : / lv_num.
 enddo.
 
+# Control Break Statement 
+Control Break Statements (At new, At first, At end of , At last) are mainly used to calculate the SUMS and Totals on a Particular field.
+
+Have to sort the ITAB first by that fields on which you need totals.
+
+They are used in proceesing of a internal table.
+
+# See the sample Code:
+
+DATA: sflight_tab TYPE SORTED TABLE OF sflight
+WITH UNIQUE KEY carrid connid fldate,
+sflight_wa LIKE LINE OF sflight_tab.
+SELECT *
+FROM sflight
+INTO TABLE sflight_tab.
+LOOP AT sflight_tab INTO sflight_wa.
+AT NEW connid.
+WRITE: / sflight_wa-carrid,
+sflight_wa-connid.
+ULINE.
+ENDAT.
+WRITE: / sflight_wa-fldate,
+sflight_wa-seatsocc.
+AT END OF connid.
+SUM.
+ULINE.
+WRITE: / 'Sum',
+sflight_wa-seatsocc UNDER sflight_wa-seatsocc.
+SKIP.
+ENDAT.
+AT END OF carrid.
+SUM.
+ULINE.
+WRITE: / 'Carrier Sum',
+sflight_wa-seatsocc UNDER sflight_wa-seatsocc.
+NEW-PAGE.
+ENDAT.
+AT LAST.
+SUM.
+WRITE: / 'Overall Sum',
+sflight_wa-seatsocc UNDER sflight_wa-seatsocc.
+ENDAT.
+ENDLOOP.
+
+
+
 
 
 
