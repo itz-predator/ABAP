@@ -591,9 +591,73 @@ lo_main -> show_secret().
 
 
 
+# SAP HANA (High-performance ANalytic Appliance) is a multi-model database that stores data in its memory instead of keeping it on a disk. 
+-The column-oriented in-memory database design allows you to run advanced analytics alongside high-speed transactions – in a single system.
+# ECC is an ERP solution provided by SAP. ECC stands for ERP Central Component and ECC is a term confined to SAP only. 
+-ECC is a component of SAP's ERP software package. 
+-The ERP suite provides the overall management and control of the functions. 
+-ECC consists of the group of functions that businesses can perform.
+# S/4HANA Basics: Differences from ECC,
+-SAP HANA is the in-memory database technology that runs the SAP landscape. 
+-S4 HANA is the business suite launched as the next-generation ERP designed to run exclusively on the HANA database. 
+-The differences between HANA vs S4 HANA are that one is a database, and the other is an ERP suite that runs on said database.
+## Differences between SAP ECC vs S/4HANA
+### 1. Database: ECC supports databases from other providers such as Db2, Oracle, or Informix, however, S/4HANA only runs on SAP HANA. As a result, S/4HANA has much faster reaction times thanks to its in-memory database.
 
-# S/4HANA Basics: Differences from ECC, 
+### 2.A merger of controlling (CO) and finance (FI): When it comes to the merger of controlling (CO) and finance (FI), SAP S4 HANA’s structure of the universal journal stores both the GL account and the cost element, vs ECC where the FI GL accounts are mapped to CO primary cost elements.
+
+### 3. New general ledger: S/4HANA also only uses the new general ledger (GI), while ECC ran both "new" and "classic" versions.
+
+### 4.Customer vs. Vendor to business partner: In ECC, customer and vendor files were separate, while S/4HANA combines the common data structure elements of both into a Business Partner record.
+
+### 5.Rebates: S/4 HANA has replaced the SD rebate processing in ECC with settlement management through condition contracts.
+
 # Simplifications (e.g., Material Ledger, Business Partner)
+## Material Ledger
+-Material Ledger is a Tool that collects transaction data for materials whose master data is stored in material master.
+-The material ledger uses this data to calculate prices to valuate these materials.
+
+-The material ledger is the basis of actual costing. It enables material inventories to be valuated in multiple currencies and allows the use of different valuation approaches.
+-The material ledger uses this data to calculate prices to valuate these materials.
+
+-The material ledger is the basis of actual costing. It enables material inventories to be valuated in multiple currencies and allows the use of different valuation approaches.
+
+### It would be a good idea to have a better understanding about the Product Cost Flow which includes:
+
+- 1.Standard Cost Estimates and related configuration/processes
+
+- 2.Work In Process/Variance/Settlement Processes under different manufacturing scenarios
+
+- 3.Material Valuation and Movements throughout the Supply Chain and manufacturing cycle.
+## Business Partner
+-In SAP S/4 HANA, Business Partner is the leading object and single-entry point to maintain Business Partner, Customer, and Supplier (formerly known as Vendor) master data.
+
+-https://youtu.be/vWyBxLety4w
+
+-Download PDF : https://icedrive.net/s/APyBWPS1tfDC5XRWt6wgj4DwAWhV
+
+-Business Partner allows maintenance of multiple addresses with corresponding address usages.
+
+-It is not a new terminology it is also in ECC
+
+### ECC have two options
+
+- 1.Customer or vendor
+- 2. Business Partner
+
+
+
+-In SAP S/4 HANA is only Business Partner
+
+-Business Partner is any entity is impact with our business and or impaction our business is known as business Partner
+
+-The EWM, MDG, TM, CRM, SRM they are following Business Partner concept.
+
+-Vendor customer is are the role which is done by business partner
+
+-It is mandatory in conversion ECC to S/4HANA, Business Partner must be assign to customer and vendor in ECC.
+
+
 # HANA Architecture: Column Store, Row Store, Code Pushdown Concept
 # Data Dictionary (DDIC): Tables, Views, Domains, Search Helps, Lock Objects
 # Hands-on: Create a transparent table and fetch data using Open SQL.
