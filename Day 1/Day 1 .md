@@ -142,6 +142,26 @@ ENDIF.
 
 
 # Control Structures (Loops, IF, CASE, DO, WHILE)
+-In Abap control structure help in managing the flow of execution within a program .
+They include conditional statements ,loop constructs ,and branching statements .
+
+# 1 Conditional Statements 
+-These are used to execute different code blocks based on conditions.
+
+# a. IF...ELSEIF...ELSE...ENDIF
+
+-Used for conditional execution based on expressions.
+# Example code 
+Data : lv_val type i value 10.
+
+if lv_val > 10.
+Write : 'Value is greater than 10'.
+elseif lv_val = 10.
+Write : 'Value is equal to 10'.
+else.
+Write : 'Value is less than 10'.
+Endif.
+
 
 
 
