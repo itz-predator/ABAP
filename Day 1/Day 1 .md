@@ -431,8 +431,167 @@ Using CALL FUNCTION .. IN UPDATE TASK is a way to bundle database changes into a
 
 
 
-# Classes & Methods, 
-# Local and Global Classes
+### Classes & Methods: 
+# Class (SE24)
+-A Class is used to encapsulate data and behavior.
+-A class is an abstract description of an object. 
+-You could say that it is a set of instructions for building an object. 
+-The attributes of objects are defined by the components of the class, which describe the state and behavior of objects.
+- Classes in ABAP Objects can be declared either globally or locally.
+-You define global classes and interfaces in the Class Builder (Transaction SE24) in the ABAP Workbench.
+-All ABAP programs have access to these global classes. Local classes are defined within an ABAP program.
+-Local classes and interfaces can only be used in the program in which they are defined.
+
+## Structure of a Class
+
+### The following statements define the structure of a class:
+
+- Attributes (variable)
+- Methods (functions or procedures)
+- Events
+- Interfaces
+## Types of Classes
+-1. **Local Classes (Defined within a program(eg, reports, fm's))**
+-2. **Global Classes (Defined in SE24 (_Class Builder_) or _Eclipse_ and reusable across different programs)**
+
+### Syntax 
+
+CLASS lcl_test DEFINITION.
+PUBLIC SECTION.
+DATA : gv_num TYPE i.
+METHODS: display_num.
+ENDCLASS.
+CLASS lcl_test IMPLEMENTATION.
+METHOD display_num.
+WRITE: gv_num.
+ENDCLASS.
+
+
+# Methods 
+-**Methods define the behavior of a class and can be instance methods or static methods .**
+
+## Defining a Method 
+**
+METHODS method_name [IMPORTING parameters]
+                  [EXPORTING parameters]
+                  [CHANGING parameters]
+                  [RETURNING VALUE(result) TYPE data_type].**
+
+
+## Types of Methods 
+- 1. **Instance Methods (default)** -Works on instance attributes ,requires an object .
+- 2. **Static Methods (CLASS_METHODS)** - called without creating an object , used for utility functions.
+
+### Example of Instance and Static Methods .
+
+CLASS lcl_test DEFINITION.
+  PUBLIC SECTION.
+    DATA: gv_text TYPE string.
+    
+METHODS: 
+      set_text IMPORTING iv_text TYPE string,
+      display_text.
+      
+CLASS-METHODS: static_method.
+ENDCLASS.
+ 
+CLASS lcl_test IMPLEMENTATION.
+  METHOD set_text.
+    gv_text = iv_text.
+  ENDMETHOD.
+  
+  METHOD display_text.
+    WRITE: gv_text.
+  ENDMETHOD.
+ 
+  METHOD static_method.
+    WRITE: 'This is a static method'.
+  ENDMETHOD.
+ENDCLASS.
+ 
+* Creating Object and Calling Methods
+DATA(lo_demo) = NEW lcl_demo( ).
+lo_demo->set_text( 'Hello, ABAP OOP!' ).
+lo_demo->display_text( ).
+ 
+* Calling Static Method
+lcl_demo=>static_method( ).
+
+## Inheritance in ABAP
+-A class can inherit from another using INHERITING FROM.
+
+### Example code 
+CLASS lcl_parent DEfINITION.
+PUBLIC SECTION.
+METHODS: parent_method.
+ENDCLASS.
+
+CLASS lcl_parent IMPLEMENTATION.
+METHOD parent_method.
+WRITE: 'Parent Method'.
+ENDMethOD.
+ENDCLASS.
+
+DATA(lo_child) = new lcl_child().
+lo_child -> parent_method(). " Inherited Method
+lo_child -> child_method(). "Child class method 
+
+## Constructor Method 
+-It initializes an object automatically upon creation.
+
+### Example code 
+
+CLASS lcl_test DEFINITION.
+PUBLIC SECTION.
+DATA : gv_mess TYPE String.
+METHODS: constructor IMPORTING iv_mess TYPE String.
+ENDCLASS.
+
+CLASS lcl_test IMPLEMENTATION.
+METHOD constructor.
+gv_mess = iv_mess.
+WRITE: gv_mess.
+ENDMETHOD.
+ENDCLASS.
+
+DATA(lo_obj) = NEW lcl_test('Welcome to OOABAP').
+
+## Friend Classes (granting Access)
+- One Class xan access private attributes of another class using FRIENDS.
+
+###  Example Code
+
+CLASS lcl_friend DEFINITION.
+PUBLIC SECTION.
+FRIENDS: lcl_main.
+PRIVATE SECTION.
+DATA: gv_secret TYPE string VALUE 'HIDDEN DATA'.
+ENDCLASS.
+CLASS lcl_main IMPLEMENTATION.
+METHOD show_secret.
+DATA(lo_friend) = NEW lcl_friend().
+WRITE: lo_friend -> gv_secret. " Accessing Private Attribute
+ENDMETHOD.
+ENDCLASS.
+DATA(lo_main) = NEW lcl_main().
+lo_main -> show_secret().
+
+
+
+ 
+
+
+                  
+
+
+
+
+
+
+
+
+
+
 # S/4HANA Basics: Differences from ECC, 
 # Simplifications (e.g., Material Ledger, Business Partner)
 # HANA Architecture: Column Store, Row Store, Code Pushdown Concept
