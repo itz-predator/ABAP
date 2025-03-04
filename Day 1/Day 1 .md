@@ -781,4 +781,11 @@ ELSE.
 WRITE: /'Data Not Found'.
 ENDIF.
 
+## 4. Explanation
+### 1. Declares an Internal table (it_stu) and Work Area (wa_stu).
+### 2. Uses Select * From zrs_student INTO Table it_stu to fetch all the records.
+### 3. Check if data exists (if it_stu IS NOT INITIAL) .
+### 4. Loops through the data and displays it using WRITE.
+
+
 
