@@ -658,6 +658,127 @@ lo_main -> show_secret().
 -It is mandatory in conversion ECC to S/4HANA, Business Partner must be assign to customer and vendor in ECC.
 
 
-# HANA Architecture: Column Store, Row Store, Code Pushdown Concept
-# Data Dictionary (DDIC): Tables, Views, Domains, Search Helps, Lock Objects
-# Hands-on: Create a transparent table and fetch data using Open SQL.
+# HANA Architecture: 
+-Data is compressed by different compression techniques (e.g. dictionary encoding, run length encoding, sparse encoding, cluster encoding, indirect encoding) in SAP HANA Column store.
+
+-When main memory limit is reached in SAP HANA, the whole database objects (table, view,etc.) that are not used will be unloaded from the main memory and saved into the disk.
+
+-These objects names are defined by application semantic and reloaded into main memory from the disk when required again. Under normal circumstances SAP HANA database manages unloading and loading of data automatically.
+
+-However, the user can load and unload data from individual table manually by selecting a table in SAP HANA studio in respective Schema- by right-clicking and selecting the option “Unload/Load”.
+
+## SAP HANA Server consists of
+
+### 1.Index Server
+### 2.Preprocessor Server
+### 3.Name Server
+### 4.Statistics Server
+### 5.XS Engine
+
+## SAP HANA Advantages are as mentioned below –
+
+-SAP HANA is useful as it’s very fast due to all data loaded in-Memory and no need to load data from disk.
+-SAP HANA can be used for the purpose of OLAP (On-line analytic) and OLTP (On-Line Transaction) on a single database.
+-SAP HANA Database consists of a set of in-memory processing engines. 
+-Calculation engine is main in-memory Processing engines in SAP HANA. It works with other processing engine like Relational database Engine(Row and Column engine), OLAP Engine, etc.
+
+-Relational database table resides in column or row store.
+
+## There are two storage types for SAP HANA table.
+
+### 1.Row type storage (For Row Table).
+-The application needs to process only one single record at one time (many selects and /or updates of single records).
+-The application typically needs to access the complete record.
+-The columns contain mainly distinct values so compression rate would be low.
+-Neither aggregations nor fast searching are required.
+-The table has a small number of rows (for example, configuration tables).
+
+
+### 2.Column type storage (For Column Table).
+-Calculations are typically executed on individual or a small number of columns.
+-The table is searched based on the values of a few columns.
+-The table has a large number of columns.
+-The table has a large number of rows and columnar operations are required (aggregate, scan, and so on)
+-High compression rates can be achieved because the majority of the columns contain only a few distinct values (compared to the number of rows
+## Advantages of Column-Based Storage
+-Column tables have several advantages:
+
+## Higher data compression rates
+-Columnar data storage allows for highly efficient compression. Especially if the column is sorted, there will be ranges of the same values in contiguous memory, so compression methods such as run length encoding or cluster encoding can be used more effectively.
+
+## Higher performance for column operations
+-With columnar data organization, operations on single columns, such as searching or aggregations, can be implemented as loops over an array stored in contiguous memory locations. Such an operation has high spatial locality and efficiently utilizes the CPU caches.
+
+In addition, highly efficient data compression not only saves memory but also increases speed.
+
+## Elimination of additional indexes
+-In many cases, columnar data storage eliminates the need for additional index structures since storing data in columns already works like having a built-in index for each column: The column-scanning speed of the in-memory column store and the compression mechanisms (especially dictionary compression) already allow read operations with very high performance. In many cases, it will not be required to have additional index structures. Eliminating indexes reduces memory size, can improve write performance, and reduces development efforts. However, this does not mean that indexes are not used at all in SAP HANA. Primary key fields always have an index and it is possible to create additional indexes, if required. In addition, full text indexes are used to support full-text search.
+
+## Elimination of materialized aggregates
+-Thanks to its column-scanning speed, the column store makes it possible to calculate aggregates on large amounts of data on the fly with high performance. This eliminates the need for materialized aggregates in many cases. Eliminating materialized aggregates has several advantages. It simplifies data model and aggregation logic, which makes development and maintenance more efficient; it allows for a higher level of concurrency because write operations do not require exclusive locks for updating aggregated values; and it ensures that the aggregated values are always up-to-date (materialized aggregates are sometimes updated only at scheduled times).
+
+## Parallelization
+-Column-based storage also simplifies parallel execution using multiple processor cores. In a column store data is already vertically partitioned. That means operations on different columns can easily be processed in parallel.
+
+# Code Pushdown Concept
+-“Code Pushdown” is a paradigm also called “code-to-data” compared to the classic approach; it is data-centric, meaning you should execute intensive, expensive computations in the database layer as much as possible to use the computing power of HANA fully.
+
+
+# Data Dictionary (DDIC): SE11 - Central Repository for all abap objects creation.
+## Tables:
+-Tables are defined in the ABAP Dictionary independently of the database. 
+-A table having the same structure is then created from this table definition in the underlying database.
+## Views:
+-Views are logical views on more than one table. 
+-The structure of the view is defined in the ABAP Dictionary. 
+-A view on the database can then be created from this structure.
+## Domains:
+-Different fields having the same technical type can be combined in domains. 
+-A domain defines the value range of all table fields and structure components that refer to this domain.
+## Search Helps:
+-The ABAP Dictionary also contains the information displayed with the F1 and F4 help for a field in an input template. 
+-The documentation about the field is created for a data element that describes the meaning of the contents of a table field. 
+-The list of possible input values that appears for the input help is created by a foreign key or a search help.
+
+## Lock Objects:
+-Lock objects are used to synchronize access to the same data by more than one user. 
+-Function modules that can be used in application programs are generated from the definition of a lock object in the ABAP Dictionary.
+
+
+
+# Hands-on: 
+# Create a transparent table and fetch data using Open SQL.
+## 1.Go to SE11
+## Select Database Table and give Name (ZSTUDENT).
+## Create and fill the fields ,data element,data type ,length and select key field(should be on top of the list).
+### 1.Set Delivery Class to A(Application Table).
+### 2.Enable Data Maintainance by Selecting Display/Maintainance Allowed in the Technical Settings.
+-Set Data Class -> APPL0.
+-Set Size Category -> 0.
+-> Buffering Not Allowed
+
+### 3.Activate the Table.
+-Choose Package and Save .
+
+## 2.Insert Sample Data
+-Go to SE11->Utilities->Table Contents->Create Entries and insert some Record .
+
+## 3.Fetch Data Using Open SQL.
+-Create a ABAP Program (SE38).
+### Example Code 
+REPORT ZRS_STUDENT.
+Data : it_stu type table of zrs_student,
+       wa_stu type zrs_student.
+       
+SELECT * FROM zrs_student into table it_stu.
+IF it_stu IS NOT INITIAL.
+LOOP AT it_stu INTO wa_stu.
+Write: / 'Student ID',wa_stu-S_ID,
+       / 'Student Name', wa_stu-S_NAME,
+       / 'Student Address',wa_stu-S_ADDRESS.
+ENDLOOP.
+ELSE.
+WRITE: /'Data Not Found'.
+ENDIF.
+
+
