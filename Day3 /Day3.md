@@ -112,12 +112,90 @@ _These operation are possible in grid _
 
 -- grid title
 
-# OOP-based ALV
+### OOP-based ALV
 - https://help.sap.com/docs/SUPPORT_CONTENT/abap/3353525697.html
   
-- OData Services: Architecture, Basic CRUD Operations, SEGW Transactions
-- RESTful ABAP Programming Model (RAP): Key Features, Behavior Definitions, Actions
-- Annotation Concepts: UI Annotations, Analytical Annotations in RAP
-- Hands-on: Create an ALV report with sorting and totals, Expose an OData service, and Create a
-simple RAP-based app.
+# OData Services: 
+
+- SAP OData is a standard Web protocol used for querying and updating data present in SAP using ABAP.
+- In SAP, we use SEGW transaction code to create an OData Service.
+- OData is used to define best practices that are required to build and consume RESTful APIs.
+## Architecture
+| OData Concept	| Database Equivalent |
+| 	:-----:	 | 	:-----:	 | 
+| Entity |      Row     |
+| Entity type | Table or view schema |
+| Entity Set |Table rows, where each row is an entity type instance | 
+| Key | Primary key |
+| Association and Navigation Properties | Foreign key |
+|Property | Column or column value |
+
+![image](https://github.com/user-attachments/assets/7db04a3e-1b01-40e6-94c5-f023e3ad4a94)
+
+# Basic CRUD Operations
+
+![image](https://github.com/user-attachments/assets/ffff53ab-7acd-4aeb-a157-b3fc88ecfc0c)
+
+# SEGW Transactions
+- SAP Gateway Service Builder (transaction SEGW) is a design-time environment, which provides developers an easy-to-use set of tools for creating services.
+- The Code-based OData Channel consumes it and supports developers throughout the development life cycle of a service.
+
+  ![image](https://github.com/user-attachments/assets/585c41c1-c995-4491-bb60-08a51522e512)
+
+# RESTful ABAP Programming Model (RAP):
+- The ABAP RESTful Application Programming Model (RAP) allows developers to efficiently build cloud-ready, transactional business apps, services, and extensions on SAP BTP ABAP environment, SAP S/4HANA Cloud Public Edition, SAP S/4HANA Cloud Private Edition, and SAP S/4HANA 1909 and higher.
+- RAP is at the heart of the ABAP Cloud development model for transactional development scenarios.
+  ![image](https://github.com/user-attachments/assets/b6f18d46-55c0-43a1-8b13-af306a1a32df)
+
+## Key Features
+- High development efficiency.
+- Standardized development flow.
+- Best practices and development guides.
+- Focus on business logic, rather than technical aspects.
+- Native testability, documentability, and supportability.
+- Code pushdown to SAP HANA.
+## Behavior Definitions
+- the behavior definition as the corresponding development object is used.
+- A business object behavior definition (behavior definition for short) is an ABAP Repository object that describes the behavior of a business object in the context of the ABAP RESTful Application Programming Model.
+- A behavior definition is defined using the Behavior Definition Language (BDL).
+  ![image](https://github.com/user-attachments/assets/3c105c42-ac2f-4732-9a07-200d962510e6)
+
+## Actions
+- In RAP, actions are non-standard operations that can modify the data of a Business Object (BO) instance.
+- These actions are defined in the Behavior Definition and implemented in the Behavior Implementation. 
+
+### There are different types of actions in RAP: 
+
+**Non-Factory Actions:**  
+   - These actions are used to implement custom logic that changes the state of an existing business object instance.  
+
+   - They are typically instance-bound, meaning they operate on a specific instance of a business object.  
+
+   - Example: Approving a travel request or marking an order as shipped.  
+**Factory Actions:** 
+   - These actions are used to create new instances of a business object.  
+
+   - They can be either instance-bound or static.  
+
+   - Example: Creating a new sales order or generating a new customer record.  
+
+_Instance-Bound Actions_: Used to copy one or more BO instances and create new instances based on the copied data. 
+
+_Static Actions_: Used to create instances with default values. 
+
+
+
+
+# Annotation Concepts:
+- ABAP annotations define technical and semantic attributes of a CDS object.
+- They are evaluated when the object defined in the CDS source code is activated or when the object is used in the ABAP runtime environment.
+- ABAP annotations can modify the behavior of ABAP SQL statements that access a CDS object.
+# UI Annotations
+- https://help.sap.com/docs/abap-cloud/abap-rap/ui-annotations
+# Analytical Annotations in RAP
+- https://help.sap.com/docs/abap-cloud/abap-rap/analytics-annotations
+# Hands-on: 
+## Create an ALV report with sorting and totals
+## Expose an OData service 
+## Create a simple RAP-based app.
 
