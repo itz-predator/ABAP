@@ -204,7 +204,7 @@ _Static Actions_: Used to create instances with default values.
 - <img width="1125" alt="Screenshot 2025-03-07 at 12 59 04" src="https://github.com/user-attachments/assets/5bb976dd-6525-4361-ad96-7db0b2330925" />
 
 ## Expose an OData service 
-### 1. Step 1. Go to transaction code - SEGW .
+### Step 1. Go to transaction code - SEGW .
 - Create a New Project
 - Name ZRS_SO_INV
 - Import DDIC Structure
@@ -224,7 +224,7 @@ _Static Actions_: Used to create instances with default values.
 
 
 
-- ### 3. Go to transaction code SEGW and expand folder service Implementation  .
+ ### Step 3. Go to transaction code SEGW and expand folder service Implementation  .
 
 - Under service implementation - Expand SDheaderSet. you will find different options.
 - Right click on GetEntitySet and select GO to ABAP work Bench .
@@ -241,7 +241,7 @@ _Static Actions_: Used to create instances with default values.
   ENDMETHOD.
 
 - **Save and activate**
-- ### 4. Go to transaction /IWFND/MAINT_SERVICE and find out you service , select your service and click on load metadata.
+- ### Step 4. Go to transaction /IWFND/MAINT_SERVICE and find out you service , select your service and click on load metadata.
   Test the ODATA service in SEGW for both the entitysets.
 -   _Follow Images in ODATA folder for clear understanding_**/Day3/ODATA**
   
