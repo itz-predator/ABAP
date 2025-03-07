@@ -196,6 +196,13 @@ _Static Actions_: Used to create instances with default values.
 - https://help.sap.com/docs/abap-cloud/abap-rap/analytics-annotations
 # Hands-on: 
 ## Create an ALV report with sorting and totals
+- <img width="1125" alt="Screenshot 2025-03-07 at 13 00 54" src="https://github.com/user-attachments/assets/8eb89309-5381-4928-9a96-691e8266db91" />
+- <img width="1125" alt="Screenshot 2025-03-07 at 13 00 59" src="https://github.com/user-attachments/assets/bf4de9bc-d49f-42e7-bd2b-46d814dfa144" />
+- <img width="1125" alt="Screenshot 2025-03-07 at 13 01 05" src="https://github.com/user-attachments/assets/4ab11558-bd97-4dc0-b2e7-9425b20522bd" />
+- <img width="1125" alt="Screenshot 2025-03-07 at 13 01 10" src="https://github.com/user-attachments/assets/aca2acdd-b617-4ea6-87b9-dd20abc5aff6" />
+- <img width="1125" alt="Screenshot 2025-03-07 at 13 00 41" src="https://github.com/user-attachments/assets/352df994-2666-4b67-9794-965cf2cdcc05" />
+- <img width="1125" alt="Screenshot 2025-03-07 at 12 59 04" src="https://github.com/user-attachments/assets/5bb976dd-6525-4361-ad96-7db0b2330925" />
+
 ## Expose an OData service 
 ## Create a simple RAP-based app.
 
