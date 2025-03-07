@@ -1,0 +1,30 @@
+CLASS zcl_act_vendor_amdp IMPLEMENTATION.
+
+  METHOD get_vendors_amdp
+    BY DATABASE PROCEDURE FOR HDB LANGUAGE SQLSCRIPT
+    OPTIONS READ-ONLY USING lfa1 lfb1 lfm1 adrc.
+
+    lt_vendor = SELECT DISTINCT a.lifnr,
+                                b.bukrs,
+                                c.ekorg,
+                                d.name1,
+                                d.city1,
+                                d.region,
+                                d.country,
+                                d.post_cdoe1
+    FROM lfa1 AS a
+    INNER JOIN lfb1 AS b 
+    ON b.mandt = a.mandt AND b.lifnr = a.lifnr AND 
+       b.loevm = '' AND b.sperr = ''
+    INNER JOIN lfm1 AS c
+    ON c.mandt = a.mandt AND c.lifnr = a.lifnr AND
+       c.loevm = '' AND c.sperm = ''
+    LEFT OUTER JOIN adrc AS d
+    ON d.client = a.mandt AND d.addrnumber = a.adrnr
+    WHERE a.mandt = lv_clnt
+      AND a.loevm = ''
+      AND a.sperr = ''
+      AND a.sperm = '';
+
+  ENDMETHOD.
+ENDCLASS.
