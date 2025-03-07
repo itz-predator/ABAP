@@ -246,4 +246,19 @@ _Static Actions_: Used to create instances with default values.
 -   _Follow Images in ODATA folder for clear understanding_**/Day3/ODATA**
   
 ## Create a simple RAP-based app.
+- Step 1 --> Create table - ZRS_DB2
+- Step 2 --> Create Root CDS Entity ZRS_DB2_STUDENT
+- Step 3 --> Create a Metadata Extension
+- Step 4 --> Create a Behavior Definition
+- Step 5 --> Create a Service Definition
+- Step 6 --> Create Service Binding
+- Here we need to choose Binding type OData V2-UI or OData V4-UI, for now we have chosen V2-UI.
+- Now publish the Service by clicking on Publish button.
+- Our RAP model is completed, now test the application.
+
+- Test Application -->
+
+- Select Service and click on preview button.
+
+  - **Find the images for clarification -Day3/RAP**
 
