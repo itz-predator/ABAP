@@ -1,0 +1,32 @@
+CLASS ZCL_AMDP_PO_PROCESSOR DEFINITION
+  PUBLIC
+  FINAL
+  CREATE PUBLIC .
+
+  PUBLIC SECTION.
+
+    INTERFACES IF_AMDP_MARKER_HDB .
+    TYPES: BEGIN OF ty_po,
+           ebeln TYPE ekko-ebeln,
+           bukrs TYPE ekko-bukrs,
+           ekorg TYPE ekko-ekorg,
+           aedat TYPE ekko-aedat,
+           END OF ty_po.
+    TYPES: tt_po TYPE TABLE of ty_po.
+    Class-METHODS get_po_data
+    IMPORTING VALUE(iv_bukrs) TYPE ekko-BUKRS
+    EXPORTING VALUE(et_data) TYPE tt_po
+    RAISING CX_AMDP_ERROR.
+
+ENDCLASS.
+
+
+
+CLASS ZCL_AMDP_PO_PROCESSOR IMPLEMENTATION.
+METHOD get_po_data BY DATABASE PROCEDURE FOR HDB LANGUAGE SQLSCRIPT OPTIONS READ-ONLY
+  using ekko.
+et_data = select ebeln, bukrs, ekorg, aedat
+from ekko
+where bukrs = :iv_bukrs;
+ENDMETHOD.
+ENDCLASS.
