@@ -1,0 +1,13 @@
+@AbapCatalog.sqlViewName: 'ZGUI_HEADER'
+@AbapCatalog.compiler.compareFilter: true
+@AbapCatalog.preserveKey: true
+@AccessControl.authorizationCheck: #NOT_REQUIRED
+@EndUserText.label: 'Purchase Order Header'
+@Metadata.ignorePropagatedAnnotations: true
+define view ZPO_HEADER_CDS as select from ekko
+{
+    key ebeln,
+    bukrs,
+    ekorg,
+    aedat
+}
