@@ -222,4 +222,9 @@
 - The tool can be used to view detailed information on each query execution and can help you evaluate potential bottlenecks and optimizations
 
 # Hands-on: 
-# Develop a CDS view with associations, Use it in an ABAP program, Implement an AMDP method.
+# Develop a CDS view with associations, Use it in an ABAP program, 
+# Implement an AMDP method:->
+## 1. Create a CDS VIEW -> ZPO_HEADER_CDS
+## 2. Create a AMDP Class for CDS Processing  -> ZCL_AMDP_PO_PROCESSOR
+## 3. Create a ABAP Program to implement AMDP Class -> ZPO_AMDP_TEST
+- Refer to code and images -DAY4/
