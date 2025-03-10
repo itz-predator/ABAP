@@ -135,5 +135,17 @@ The following deadlines are already considered in the workflow templates WS40000
 - Annotations are descriptive information for OData Service.
 
 - The OData V2 protocol allows you to add annotations to the metadata document. The purpose of the annotations is to add information and hints to the Entity Data Model elements.
-# Final Revision: Review key concepts, Code Debugging Practice, Real-world Scenarios
-# Hands-on: Develop a workflow for Purchase Order Approval, Create a Fiori List Report with CDS annotations.
+
+# Hands-on: Develop a workflow for Purchase Order Approval
+- Approval Workflows for Purchase Orders and Change Versions
+0-step approval workflow (WS14000075)
+- This workflow starts if, according to the start conditions, no approval is required. As a result, the purchase order (PO) is released or the changes to the purchase order change version (PO-CV) are transferred to the active document.
+
+1-step approval workflow (WS14000089)
+- This workflow requires approval of the PO / PO-CV by the manager of the relevant purchasing organization. If the manager approves, the PO/ PO-CV is released; if he rejects, the PO/ PO-CV gets the status rejected, the workflow is terminated and the creator can reprocess the PO/ PO-CV and submit it for approval again.
+
+- You define the authorization for adding/removing approvers or reviewers in the processor assignment for workflow template WS14000089 in Customizing for SAP Supplier Relationship Management under SRM Server  Cross-Application Basic Settings  Business Workflow  Application-Controlled Workflow  Technical Configuration  Perform Task-Specific Customizing.
+-   n-step approval workflow (WS14000145)
+- This workflow is intended for longer (more than 2-step) approval processes where it is necessary that the approver and the creator can both make changes to the PO / PO-CV during the approval process without the workflow being interrupted and having to be restarted.
+# Create a Fiori List Report with CDS annotations.
+- Created and Implemented on SAP BTP Fiori and Deployed on CF.
