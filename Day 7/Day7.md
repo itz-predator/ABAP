@@ -75,7 +75,37 @@ Output:
 
 
 
-## Business Objects, Events, Tasks, Deadline Monitoring
+## Business Objects
+- Business Object in SAP Business Workflow is defined as a collection of methods or events for an entity in business process. Few common Business Objects in SAP system include: Customer, Material, and Vendor. With the use of Business Objects, all services are provided in the form of executable methods.
+- An object in the Workflow represents a Business entity in SAP system. Common entity example includes: Purchase Order, Material, Vendor, etc.
+- TCODE - SWO1
+# Events
+- An event affects the flow of the process.
+
+## The workflow capability editor supports the following events:
+
+### Start event: Indicates where a workflow starts and what triggers a workflow. Start events have no incoming sequence flow. Each workflow has one start event.
+
+### Intermediate Message Event: Process steps where the respective workflow instance waits for a message before the flow commences in the respective control flow branch.
+
+### Intermediate Timer Event: Allows a workflow to pause and resume after a specified interval of time.
+
+### End event: An event with no specific result. End events have no outgoing sequence flow. Consider a workflow that has several branches, the workflow terminates only after all the branches are executed.
+
+### Terminate end event: The terminate event ends the workflow in a regular way. But, consider a workflow consists of multiple branches and you choose one branch as a terminate end event. The workflow terminates when the branch marked as terminate end is executed without waiting for other branches to get executed.
+
+
+# Deadline Monitoring
+- Deadline monitoring is a workflow runtime system function that monitors the start and end deadlines for the processing of selected work items in an approval process.
+
+The following deadlines are already considered in the workflow templates WS40000016 (Approval Workflow) and WS40000017 (Completion Workflow):
+
+- Latest Start Date/Time
+
+- Requested End Date/Time
+
+- Latest End Date/Time
+  
 # SAP Fiori: Architecture, Launchpad Configuration, Fiori Elements, Annotations
 # Final Revision: Review key concepts, Code Debugging Practice, Real-world Scenarios
 # Hands-on: Develop a workflow for Purchase Order Approval, Create a Fiori List Report with CDS annotations.
