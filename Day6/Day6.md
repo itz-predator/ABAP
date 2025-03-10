@@ -229,4 +229,27 @@ ENDCLASS.
  - Enhancement spots are containers for explicit enhancement options and carry information about the positions at which enhancement options were created.
  - One enhancement spot can manage several enhancement options of a repository object and vice versa; several enhancement spots can be assigned to one enhancement option.
 # SAP BTP Overview: ABAP Environment, Cloud Foundry, Key Use Cases
-# Hands-on: Implement a Custom BAdI in Procurement Process, Deploy an ABAP Cloud application on BTP.
+## - SAP BTP is a portfolio of SAP solutions and services that are brought under one umbrella. These services, and solutions helps organizations build a new cloud solution or extend SAP systems.
+- In other words – SAP BTP is a bundle of many, many different services. Some of those services can be used for innovation and application development, some services are purely for monitoring, some are databases as a service, and some are runtimes as a service. BTP platform gives you access to all these services.
+- _SAP BTP provides all the necessary resources to create a cloud solution. It allows you to focus on business logics, while BTP takes care of the technical aspects behind the scenes._
+- ![image](https://github.com/user-attachments/assets/32b903f5-527f-4806-b73d-63c51dd52994)
+  ## SAP BTP, ABAP environment is a platform-as-a-service (PaaS) that enables developers to build cloud applications using a cloud-optimized version of the ABAP programming language.
+  - SAP BTP, ABAP environment runs on the SAP HANA database, with ABAP-managed access to released database objects.
+  - Connectivity options cover both cloud-based and on-premise scenarios, and include the capability to expose web application programming interfaces (APIs).
+- In 2017, Cloud Foundry on SAP was introduced, an open-source environment that can be hosted on infrastructures, on-premise or in the cloud, and offers support for various programming languages.
+- In 2018, ABAP was added to the list of languages supported by Cloud Foundry.
+- It runs exclusively on Cloud Foundry and its positioning within SAP BTP, Cloud Foundry enables close integration with other services and capabilities available in SAP BTP.
+
+  ### - It’s important to consider a few tools necessary for managing the SAP BTP, ABAP environment. The first is SAP BTP cockpit, which is used for creating and maintaining the ABAP environment. You’ll also use ABAP Development Tools (ADT) for Eclipse for your development tasks. Lastly, for code exchange and versioning, GitHub will be used via the abapGit plugin available for ADT or the Git-enabled Change and Transport System (gCTS).
+
+  ### -Use cases for SAP BTP, ABAP environment can fall under two options. Side-by-side extensions are used for building new extensions and migrating existing extensions decoupled from SAP S/4HANA’s core. Then there’s new application development, which is used to create applications from scratch. This option supports integration with backend systems and leveraging SAP BTP services.
+
+- SAP BTP, ABAP environment shares the same foundation as SAP S/4HANA Cloud. The programming model is the ABAP RESTful application programming model, and the language is a restricted version of ABAP that is commonly used in on-premise systems. These restrictions include features that are not applicable in cloud environments, such as file access and system calls, and unsupported features (dynpros, lists, etc.).
+
+
+# Hands-on: Implement a Custom BAdI in Procurement Process, 
+- ![image](https://github.com/user-attachments/assets/f44e3850-6923-4004-bf2e-122a7d8d39c3)
+- Implemented a BADI in Eclipse ADT .
+
+# Deploy an ABAP Cloud application on BTP.
+- Deployed Fiori App on BTP
