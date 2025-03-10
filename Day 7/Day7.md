@@ -106,6 +106,34 @@ The following deadlines are already considered in the workflow templates WS40000
 
 - Latest End Date/Time
   
-# SAP Fiori: Architecture, Launchpad Configuration, Fiori Elements, Annotations
+# SAP Fiori: Architecture -
+- The SAP Fiori architecture introduces the high-level architecture of SAP Fiori.
+
+- The SAP Fiori apps are built with SAPUI5 technology for web applications and iOS native and can be used on smartphones, tablets, and desktop computers. The SAP Fiori launchpad is used to launch and run the apps.
+- The business data that is consumed in the apps is retrieved at runtime from the back-end systems by using OData services.
+-  ![image](https://github.com/user-attachments/assets/112a1637-b3b8-4999-9b3c-6bc057dd354c)
+
+## Launchpad Configuration
+- SAP Fiori launchpad is a shell that hosts SAP Fiori apps and provides the apps with services such as navigation, personalization, embedded support, and application configuration.
+- SAP Fiori launchpad is the entry point to SAP Fiori apps on mobile and desktop devices.
+  ### FLP Configurations Steps
+
+
+- We will complete the configurations by following these steps notice that this example has been done on S/4 HANA 2020 release  :
+- ![image](https://github.com/user-attachments/assets/5f7ffdc9-2c1a-40f4-bbc7-7a82f786c5d0)
+- Follow link for more ->https://community.sap.com/t5/technology-blogs-by-sap/fiori-launchpad-configuration-your-6-steps-guide-to-a-customized-experience/ba-p/13568479
+
+
+
+## Fiori Elements
+- SAP Fiori elements is a framework that comprises the most commonly used floorplan templates and is designed to:
+
+- Speed up development by reducing the amount of frontend code needed to build SAP Fiori apps.
+- Drive UX consistency and compliance with the latest SAP Fiori design guidelines.
+## Annotations
+- Annotations in OData V2 and OData V4
+- Annotations are descriptive information for OData Service.
+
+- The OData V2 protocol allows you to add annotations to the metadata document. The purpose of the annotations is to add information and hints to the Entity Data Model elements.
 # Final Revision: Review key concepts, Code Debugging Practice, Real-world Scenarios
 # Hands-on: Develop a workflow for Purchase Order Approval, Create a Fiori List Report with CDS annotations.
