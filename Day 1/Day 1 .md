@@ -732,6 +732,15 @@ In addition, highly efficient data compression not only saves memory but also in
 -Views are logical views on more than one table. 
 -The structure of the view is defined in the ABAP Dictionary. 
 -A view on the database can then be created from this structure.
+- ### Four different view types are supported. These differ in the way in which the view is implemented and in the methods permitted for accessing the view data.
+
+●      Database views are implemented with an equivalent view of the database.
+
+●      Projection views are used to hide fields of a table (only projection).
+
+●      Help views can be used as a selection method in search helps.
+
+●      Maintenance views allow you to maintain the data distributed to several tables for one application object at a time.
 ## Domains:
 -Different fields having the same technical type can be combined in domains. 
 -A domain defines the value range of all table fields and structure components that refer to this domain.
