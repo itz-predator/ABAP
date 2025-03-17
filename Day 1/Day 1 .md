@@ -10,14 +10,14 @@ Elementary types are part of the dual-level domain concept for fields in ABAP Di
 - By directly assigning an ABAP Dictionary type.
 You can assign a predefined ABAP Dictionary type and a number of characters to an elementary type.
 
-1.Byte field	X
-2.Text field	C
-3.Integer	I
-4.Floating point	F
-5.Packed number	P
-6.Text string	STRING
-7.DATS Date D
-8. ......There are more but most used in abap programming are this only 
+- 1.Byte field	X
+- 2.Text field	C
+- 3.Integer	I
+- 4.Floating point	F
+- 5.Packed number	P
+- 6.Text string	STRING
+- 7.DATS Date D
+- 8. ......There are more but most used in abap programming are this only 
 
 # Example 
 data: num1 type i value = '5'.
