@@ -368,6 +368,30 @@ This produces the following output:
 Factorial of          5 is        120
 
 To ensure that an input parameter is not changed in the calling program, even if it is changed in the subroutine, you can pass data to a subroutine by value. In this example, the factorial of a number num is calculated. The input parameter num is passed to the formal parameter f_num of the subroutine. Although f_num is changed in the subroutine, the actual parameter num keeps its old value. 
+### CHAIN ..... ENDCHAIN is used to validate field inputs.
+
+Your screen has 3 fields,
+
+Sales Org.
+
+Distribution chnl.
+
+Plant
+
+Once user enters values in each field & hits enter, you can validate the data, & if its incorrect you want to place cursor in the same field & display error message. Then you need to use chain..endchain.
+
+- CHAIN.
+
+- FIELD : sales_org.
+
+- field : dist_chnl.
+
+- field : plant.
+
+- module : validate_data.
+
+- ENDCHAIN.
+
 
 # Function Modules:
 -Function modules are ABAP routines that encapsulate program code and provide an interface for data exchange. 
